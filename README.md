@@ -44,13 +44,25 @@ Before you begin, ensure you have met the following requirements:
    flutter pub get
 
 ### Running the App
-To run the app on emulator or connected devices:
+
+1. Navigate to project directory:
+
+   ```bash
+   cd event_planner
+
+2. To run the app on emulator or connected devices, use the following command:
 
    ```bash
    flutter run
 
 ### Running Tests
-To run the unit tests for project, use the following command:
+
+1. Navigate to project directory:
+
+   ```bash
+   cd event_planner
+   
+2. To run the unit tests for project, use the following command:
 
    ```bash
    flutter test
