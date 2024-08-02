@@ -43,7 +43,14 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    flutter pub get
 
-5. To run the app on emulator or connected devices:
+### Running the App
+To run the app on emulator or connected devices:
 
    ```bash
    flutter run
+
+### Running Tests
+To run the unit tests for project, use the following command:
+
+   '''bash
+   flutter test
