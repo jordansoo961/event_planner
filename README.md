@@ -52,5 +52,5 @@ To run the app on emulator or connected devices:
 ### Running Tests
 To run the unit tests for project, use the following command:
 
-   '''bash
+   ```bash
    flutter test
