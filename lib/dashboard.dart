@@ -20,10 +20,6 @@ class Dashboard extends StatefulWidget {
 
   @override
   DashboardState createState() => DashboardState();
-
-  Future<void> addEvent(Event event) async {
-    await DashboardState().addEvent(event);
-  }
 }
 
 class DashboardState extends State<Dashboard> {
@@ -73,13 +69,28 @@ class DashboardState extends State<Dashboard> {
   }
   
   Future<void> addEvent(Event event) async {
+    print("*************** Adding event ****************");
+    print('Event Name: ${event.title},\nDate: ${event.date},\nLocation: ${event.location},\nDescription: ${event.description},\nAttending: ${event.isAttending}');
     await eventBox.add(event);
-    setState(() { });
+    print("############### Event added ################");
+    print('Event Name: ${event.title},\nDate: ${event.date},\nLocation: ${event.location},\nDescription: ${event.description},\nAttending: ${event.isAttending}');
+    if (mounted) setState(() { });
   }
 
-  updateEvent(int index, Event event) {
-    eventBox.putAt(index, event);
-    setState(() { });
+  Future<void> updateEvent(int index, Event event) async {
+    print("*************** Updating event ****************");
+    print('Event Name: ${event.title},\nDate: ${event.date},\nLocation: ${event.location},\nDescription: ${event.description},\nAttending: ${event.isAttending}');
+    await eventBox.putAt(index, event);
+    print("############### Event updated ################");
+    print('Event Name: ${event.title},\nDate: ${event.date},\nLocation: ${event.location},\nDescription: ${event.description},\nAttending: ${event.isAttending}');
+    if (mounted) setState(() { });
+  }
+
+  Future<void> deleteEvent(int index) async {
+    print("*************** Deleting event ****************");
+    await eventBox.deleteAt(index);
+    print("*************** Event deleted ****************");
+    if (mounted) setState(() { });
   }
 
   navigateToAddEvent() async {
@@ -167,7 +178,8 @@ class DashboardState extends State<Dashboard> {
                                   TextButton(
                                     onPressed: () {
                                       Navigator.pop(context);
-                                      box.deleteAt(index);
+                                      // box.deleteAt(index);
+                                      deleteEvent(index);
                                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: GeneralText(text: "Event Deleted")));
                                     }, // Confirm
                                     child: GeneralText(text: StringConfig.dashboard_dialog_btnDelete),
